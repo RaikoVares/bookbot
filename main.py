@@ -1,3 +1,4 @@
+import sys
 from stats import count_words
 from stats import count_letters
 from stats import sort_letters
@@ -24,7 +25,12 @@ def print_report(path, word_count, sorted_characters):
     print("============= END ===============")
 
 def main():
-    path = "books/frankenstein.txt"
+
+    if len(sys.argv) != 2:
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
+
+    path = sys.argv[1]
     text = get_books_text(path)
     word_count = count_words(text) 
     letter_count_dic = count_letters(text)
